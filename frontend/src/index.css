@@ -1,0 +1,105 @@
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.task-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+.task-card .p-card-body {
+  height: 100%;
+}
+
+.task-card .p-card-content {
+  height: 100%;
+  display: flex;
+}
+.p-selectbutton .p-button {
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+}
+
+.p-inputtext {
+  font-size: 1.05rem;
+}
+.task-search {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  font-size: 1.05rem;
+}
+
+.task-search:focus {
+  box-shadow: none !important;
+}
+
+.p-selectbutton .p-button {
+  padding: 0.8rem 1.4rem;
+  font-weight: 600;
+}
+
+.p-selectbutton {
+  flex-wrap: wrap;
+}
+/* Search */
+
+.task-search {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  font-size: 1.05rem;
+}
+
+.task-search:focus {
+  box-shadow: none !important;
+}
+
+/* Filter Pills */
+
+.task-filter {
+  background: var(--surface-100) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--surface-border) !important;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+}
+
+.task-filter:hover {
+  background: var(--surface-200) !important;
+  transform: translateY(-1px);
+}
+
+.task-filter-active {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+}
+
+.task-filter-active:hover {
+  transform: translateY(-1px);
+}
+.task-action-btn {
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  transition: all 0.2s ease;
+}
+
+.task-action-btn:hover {
+  transform: translateY(-2px);
+}
+body {
+  background: #f7f8fc;
+}
