@@ -6,16 +6,29 @@ const SignInPage = () => {
       className="flex justify-content-center align-items-center min-h-screen px-3"
       style={{
         background:
-          "linear-gradient(135deg, #eff6ff 0%, #f8fafc 50%, #ffffff 100%)",
+          "linear-gradient(135deg,#eff6ff 0%,#f8fafc 55%,#ffffff 100%)",
       }}
     >
-      <div className="text-center w-full" style={{ maxWidth: "420px" }}>
-        <h1 className="text-4xl font-bold mb-2" style={{ color: "#2563eb" }}>
+      <div className="w-full text-center" style={{ maxWidth: "460px" }}>
+        <h1
+          style={{
+            color: "#2563eb",
+            fontSize: "2.8rem",
+            fontWeight: 700,
+            marginBottom: ".5rem",
+          }}
+        >
           TaskFlow
         </h1>
 
-        <p className="text-600 mb-5">
-          Welcome back! Sign in to continue managing your tasks.
+        <p
+          style={{
+            color: "#6b7280",
+            fontSize: "1.05rem",
+            marginBottom: "2rem",
+          }}
+        >
+          Welcome back. Sign in to continue managing your tasks.
         </p>
 
         <SignIn
@@ -23,22 +36,53 @@ const SignInPage = () => {
           appearance={{
             elements: {
               card: {
-                boxShadow: "0 12px 30px rgba(0,0,0,0.08)",
-                borderRadius: "18px",
+                borderRadius: "16px",
+                boxShadow: "0 10px 28px rgba(0,0,0,.08)",
+                border: "1px solid #e5e7eb",
+                padding: "2rem",
               },
+
               headerTitle: {
-                fontSize: "1.6rem",
+                fontSize: "1.7rem",
                 fontWeight: "700",
               },
+
               headerSubtitle: {
                 color: "#6b7280",
               },
-              formButtonPrimary: {
-                backgroundColor: "#2563eb",
-                borderRadius: "10px",
+
+              formFieldInput: {
+                height: "54px",
+                borderRadius: "12px",
+                border: "1px solid #dbe4f0",
+                fontSize: "1rem",
               },
+
+              formButtonPrimary: {
+                height: "54px",
+                borderRadius: "12px",
+                backgroundColor: "#2563eb",
+                fontWeight: "600",
+                fontSize: "1rem",
+              },
+
+              socialButtonsBlockButton: {
+                height: "54px",
+                borderRadius: "12px",
+                border: "1px solid #dbe4f0",
+              },
+
+              dividerLine: {
+                background: "#e5e7eb",
+              },
+
+              dividerText: {
+                color: "#6b7280",
+              },
+
               footerActionLink: {
                 color: "#2563eb",
+                fontWeight: "600",
               },
             },
           }}
