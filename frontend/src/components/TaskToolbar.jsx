@@ -28,34 +28,28 @@ const TaskToolbar = ({
   return (
     <div className="surface-card border-round-2xl shadow-2 p-4 mb-6">
       <div className="flex flex-column gap-4">
-        {/* Search */}
+        {/* Search + Sort */}
 
-        <div className="task-search-wrapper">
-          <i className="pi pi-search task-search-icon" />
+        <div className="flex flex-column md:flex-row justify-content-between align-items-stretch md:align-items-center gap-3">
+          <div className="task-search-wrapper">
+            <i className="pi pi-search task-search-icon" />
 
-          <InputText
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search tasks..."
-            className="task-search w-full"
-          />
-        </div>
+            <InputText
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search tasks..."
+              className="task-search"
+            />
 
-        {/* Filters + Sort */}
-
-        <div className="flex flex-column xl:flex-row justify-content-between align-items-start xl:align-items-center gap-4">
-          <div className="task-filter-group">
-            {options.map((option) => (
+            {search && (
               <Button
-                key={option.value}
-                label={option.label}
+                icon="pi pi-times"
+                text
                 rounded
-                className={
-                  filter === option.value ? "task-filter-active" : "task-filter"
-                }
-                onClick={() => setFilter(option.value)}
+                severity="secondary"
+                onClick={() => setSearch("")}
               />
-            ))}
+            )}
           </div>
 
           <Dropdown
@@ -66,9 +60,23 @@ const TaskToolbar = ({
             className="task-sort-dropdown"
           />
         </div>
+
+        {/* Filters */}
+
+        <div className="task-filter-group">
+          {options.map((option) => (
+            <Button
+              key={option.value}
+              label={option.label}
+              className={
+                filter === option.value ? "task-filter-active" : "task-filter"
+              }
+              onClick={() => setFilter(option.value)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
 };
-
 export default TaskToolbar;
