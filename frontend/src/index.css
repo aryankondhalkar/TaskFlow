@@ -38,12 +38,15 @@ body {
 
 .stats-icon {
   width: 62px;
+  min-width: 62px;
   height: 62px;
   border-radius: 50%;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  flex-shrink: 0;
 }
 
 .stats-icon i {
