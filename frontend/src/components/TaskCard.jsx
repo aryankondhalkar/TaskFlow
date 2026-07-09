@@ -17,11 +17,13 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
       color: "#4B5563",
       border: "1px solid #D1D5DB",
     },
+
     "in-progress": {
       background: "#DBEAFE",
       color: "#1D4ED8",
       border: "1px solid #93C5FD",
     },
+
     done: {
       background: "#DCFCE7",
       color: "#15803D",
@@ -41,11 +43,13 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
       color: "#0F766E",
       border: "1px solid #99F6E4",
     },
+
     medium: {
       background: "#FFF7ED",
       color: "#C2410C",
       border: "1px solid #FDBA74",
     },
+
     high: {
       background: "#FEE2E2",
       color: "#B91C1C",
@@ -73,7 +77,7 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
 
     const diff = (due - today) / (1000 * 60 * 60 * 24);
 
-    if (diff < 0)
+    if (diff < 0) {
       return {
         label: "Overdue",
         style: {
@@ -82,8 +86,9 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
           border: "1px solid #F87171",
         },
       };
+    }
 
-    if (diff === 0)
+    if (diff === 0) {
       return {
         label: "Due Today",
         style: {
@@ -92,8 +97,9 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
           border: "1px solid #FCD34D",
         },
       };
+    }
 
-    if (diff === 1)
+    if (diff === 1) {
       return {
         label: "Due Tomorrow",
         style: {
@@ -102,6 +108,7 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
           border: "1px solid #67E8F9",
         },
       };
+    }
 
     return {
       label: due.toLocaleDateString(undefined, {
@@ -120,22 +127,23 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
   const dueDateInfo = getDueDateInfo(task.dueDate);
 
   const badgeStyle = {
-    fontSize: ".9rem",
-    padding: ".4rem .8rem",
+    fontSize: ".82rem",
+    padding: ".38rem .75rem",
     fontWeight: 600,
     borderRadius: "999px",
   };
-
   return (
-    <Card className="task-card shadow-2 border-round-xl h-full w-full">
-      <div className="flex flex-column gap-5 h-full">
+    <Card className="task-card shadow-2 border-round-2xl h-full w-full">
+      <div className="flex flex-column h-full gap-4">
+        {/* Title */}
+
         <h3
           className="m-0"
           style={{
-            fontSize: "1.6rem",
+            fontSize: "1.45rem",
             fontWeight: 700,
-            lineHeight: 1.35,
-            minHeight: "4.2rem",
+            lineHeight: 1.4,
+            minHeight: "4rem",
             display: "-webkit-box",
             WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
@@ -145,6 +153,8 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
         >
           {task.title}
         </h3>
+
+        {/* Badges */}
 
         <div className="flex flex-wrap gap-2">
           <Tag
@@ -172,27 +182,30 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
           />
         </div>
 
+        {/* Description */}
+
         <p
           className="m-0 text-700"
           style={{
-            fontSize: "1.15rem",
-            fontWeight: 400,
-            lineHeight: 1.8,
-            minHeight: "6rem",
+            fontSize: "1rem",
+            lineHeight: 1.75,
+            minHeight: "5.5rem",
             display: "-webkit-box",
             WebkitLineClamp: 3,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
           }}
         >
-          {task.description || "No description"}
+          {task.description || "No description provided."}
         </p>
 
-        <div className="flex justify-content-end gap-2 mt-auto flex-wrap">
+        {/* Actions */}
+
+        <div className="task-card-actions mt-auto">
           {!isCompleted && (
             <Button
               icon="pi pi-check"
-              rounded
+              label="Mark Done"
               outlined
               severity="success"
               className="task-action-btn"
@@ -202,7 +215,7 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
 
           <Button
             icon="pi pi-eye"
-            rounded
+            label="View"
             outlined
             severity="secondary"
             className="task-action-btn"
@@ -211,7 +224,7 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
 
           <Button
             icon="pi pi-pencil"
-            rounded
+            label="Edit"
             outlined
             severity="info"
             className="task-action-btn"
@@ -220,7 +233,7 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete, onView }) => {
 
           <Button
             icon="pi pi-trash"
-            rounded
+            label="Delete"
             outlined
             severity="danger"
             className="task-action-btn"

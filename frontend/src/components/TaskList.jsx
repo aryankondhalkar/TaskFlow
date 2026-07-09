@@ -7,11 +7,18 @@ const TaskList = ({ tasks, onEdit, onDelete, onComplete, onView }) => {
   }
 
   return (
-    <div className="grid">
+    <div className="grid task-grid">
       {tasks.map((task) => (
         <div
           key={task._id}
-          className="col-12 md:col-6 lg:col-4 flex align-items-stretch"
+          className="
+            col-12
+            sm:col-12
+            md:col-6
+            xl:col-4
+            flex
+            align-items-stretch
+          "
         >
           <TaskCard
             task={task}

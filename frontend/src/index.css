@@ -1,105 +1,280 @@
+/* =========================
+   Global
+========================= */
+
 body {
+  margin: 0;
   font-family: "Inter", sans-serif;
   font-size: 16px;
+  background: #f7f8fc;
 }
 
-.task-card {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+/* =========================
+   Stats Cards
+========================= */
+
+.stats-card {
+  border: 1px solid var(--surface-border);
+  border-radius: 1.25rem;
+  transition: all 0.25s ease;
 }
 
-.task-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-.task-card .p-card-body {
-  height: 100%;
+.stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
 }
 
-.task-card .p-card-content {
-  height: 100%;
+.stats-title {
+  display: block;
+  color: var(--text-color-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.stats-value {
+  margin: 0.4rem 0 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.stats-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
   display: flex;
-}
-.p-selectbutton .p-button {
-  font-weight: 600;
-  padding: 0.75rem 1.25rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.p-inputtext {
-  font-size: 1.05rem;
+.stats-icon i {
+  font-size: 1.6rem;
 }
+
+/* =========================
+   Search
+========================= */
+
+.task-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+
+  padding: 0.95rem 1.2rem;
+
+  border-radius: 1rem;
+
+  background: var(--surface-100);
+
+  border: 1px solid var(--surface-border);
+}
+
+.task-search-icon {
+  color: var(--text-color-secondary);
+  font-size: 1rem;
+}
+
 .task-search {
   border: none !important;
   background: transparent !important;
   box-shadow: none !important;
   padding: 0 !important;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .task-search:focus {
   box-shadow: none !important;
 }
 
-.p-selectbutton .p-button {
-  padding: 0.8rem 1.4rem;
-  font-weight: 600;
-}
+/* =========================
+   Filter Chips
+========================= */
 
-.p-selectbutton {
+.task-filter-group {
+  display: flex;
   flex-wrap: wrap;
-}
-/* Search */
-
-.task-search {
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  font-size: 1.05rem;
+  gap: 0.65rem;
 }
 
-.task-search:focus {
-  box-shadow: none !important;
+.task-filter,
+.task-filter-active {
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+  padding: 0.75rem 1.15rem !important;
+  transition: all 0.2s ease;
 }
-
-/* Filter Pills */
 
 .task-filter {
-  background: var(--surface-100) !important;
-  color: var(--text-color) !important;
+  background: white !important;
   border: 1px solid var(--surface-border) !important;
-  transition: all 0.2s ease;
-  font-weight: 600;
-  padding: 0.75rem 1.4rem;
+  color: var(--text-color) !important;
 }
 
 .task-filter:hover {
-  background: var(--surface-200) !important;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .task-filter-active {
   background: var(--primary-color) !important;
   color: white !important;
   border: none !important;
-  font-weight: 600;
-  padding: 0.75rem 1.4rem;
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.25);
 }
 
-.task-filter-active:hover {
-  transform: translateY(-1px);
+.task-sort-dropdown {
+  min-width: 220px;
 }
+
+/* =========================
+   Task Cards
+========================= */
+
+.task-card {
+  border-radius: 1.25rem;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+}
+
+.task-card .p-card-body {
+  height: 100%;
+}
+
+.task-card .p-card-content {
+  display: flex;
+  height: 100%;
+}
+
+.task-grid {
+  row-gap: 0.5rem;
+}
+
+/* =========================
+   Card Actions
+========================= */
+
+.task-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .task-action-btn {
-  width: 2.75rem !important;
-  height: 2.75rem !important;
-  transition: all 0.2s ease;
+  flex: 1 1 calc(50% - 0.4rem);
+
+  min-height: 44px !important;
+
+  font-size: 0.9rem !important;
+
+  font-weight: 600 !important;
 }
 
-.task-action-btn:hover {
-  transform: translateY(-2px);
+.task-action-btn .p-button-icon {
+  margin-right: 0.45rem;
 }
-body {
-  background: #f7f8fc;
+
+/* =========================
+   Empty State
+========================= */
+
+.empty-state {
+  max-width: 460px;
+  width: 100%;
+}
+
+.empty-icon {
+  width: 96px;
+  height: 96px;
+
+  margin: 0 auto 1.5rem;
+
+  border-radius: 50%;
+
+  background: rgba(59, 130, 246, 0.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-icon i {
+  font-size: 2.7rem;
+  color: var(--primary-color);
+}
+
+.empty-title {
+  margin-bottom: 0.75rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.empty-description {
+  color: var(--text-color-secondary);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+  .stats-value {
+    font-size: 1.6rem;
+  }
+
+  .task-sort-dropdown {
+    width: 100%;
+  }
+
+  .task-card-actions {
+    gap: 0.6rem;
+  }
+
+  .task-action-btn {
+    flex: 1 1 calc(50% - 0.3rem);
+  }
+
+  .empty-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .task-action-btn {
+    flex: 0 0 auto;
+  }
+}
+.custom-paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.paginator-page {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-secondary);
+}
+
+@media (max-width: 768px) {
+  .custom-paginator {
+    gap: 0.75rem;
+  }
+
+  .custom-paginator .p-button {
+    flex: 1;
+  }
+
+  .paginator-page {
+    width: 100%;
+    text-align: center;
+    order: -1;
+  }
 }

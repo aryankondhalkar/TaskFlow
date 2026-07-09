@@ -26,23 +26,12 @@ const TaskToolbar = ({
   ];
 
   return (
-    <div
-      className="surface-card shadow-2 border-round-2xl p-4 mb-6"
-      style={{
-        border: "1px solid var(--surface-border)",
-      }}
-    >
+    <div className="surface-card border-round-2xl shadow-2 p-4 mb-6">
       <div className="flex flex-column gap-4">
         {/* Search */}
 
-        <div
-          className="flex align-items-center gap-3 px-4 py-3 border-round-xl"
-          style={{
-            background: "var(--surface-100)",
-            border: "1px solid var(--surface-border)",
-          }}
-        >
-          <i className="pi pi-search text-500" />
+        <div className="task-search-wrapper">
+          <i className="pi pi-search task-search-icon" />
 
           <InputText
             value={search}
@@ -52,10 +41,10 @@ const TaskToolbar = ({
           />
         </div>
 
-        {/* Filter + Sort */}
+        {/* Filters + Sort */}
 
-        <div className="flex flex-column lg:flex-row justify-content-between gap-4">
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-column xl:flex-row justify-content-between align-items-start xl:align-items-center gap-4">
+          <div className="task-filter-group">
             {options.map((option) => (
               <Button
                 key={option.value}
@@ -73,8 +62,8 @@ const TaskToolbar = ({
             value={sort}
             options={sortOptions}
             onChange={(e) => setSort(e.value)}
-            placeholder="Sort By"
-            style={{ minWidth: "220px" }}
+            placeholder="Sort Tasks"
+            className="task-sort-dropdown"
           />
         </div>
       </div>

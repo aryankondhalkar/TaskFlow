@@ -5,19 +5,24 @@ const EmptyState = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-content-center mt-8">
-      <div className="surface-card shadow-2 border-round-xl p-6 text-center w-full md:w-30rem">
-        <i className="pi pi-inbox text-6xl text-primary mb-4" />
+    <div className="flex justify-content-center mt-7">
+      <div className="empty-state surface-card shadow-2 border-round-2xl p-6 text-center">
+        <div className="empty-icon">
+          <i className="pi pi-inbox" />
+        </div>
 
-        <h2 className="mt-3 mb-2">No Tasks Yet</h2>
+        <h2 className="empty-title">Nothing here yet</h2>
 
-        <p className="text-600 mb-5">
-          Create your first task and start organizing your work.
+        <p className="empty-description">
+          Your workspace is empty. Create your first task and start tracking
+          your progress.
         </p>
 
         <Button
-          label="Create Task"
+          label="Create Your First Task"
           icon="pi pi-plus"
+          rounded
+          size="large"
           onClick={() => navigate("/create-task")}
         />
       </div>

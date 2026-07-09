@@ -41,48 +41,24 @@ const StatsCard = ({ tasks }) => {
   return (
     <div className="grid mb-5">
       {stats.map((stat) => (
-        <div key={stat.title} className="col-12 sm:col-6 xl:col-3">
-          <Card
-            className="shadow-2 border-round-2xl h-full"
-            style={{
-              border: "1px solid var(--surface-border)",
-            }}
-          >
+        <div key={stat.title} className="col-6 xl:col-3">
+          <Card className="stats-card h-full">
             <div className="flex justify-content-between align-items-center">
               <div>
-                <p
-                  className="m-0 text-600"
-                  style={{
-                    fontSize: ".95rem",
-                    fontWeight: 500,
-                  }}
-                >
-                  {stat.title}
-                </p>
+                <span className="stats-title">{stat.title}</span>
 
-                <h2
-                  className="mt-2 mb-0"
-                  style={{
-                    fontSize: "2rem",
-                    fontWeight: 700,
-                  }}
-                >
-                  {stat.value}
-                </h2>
+                <h2 className="stats-value">{stat.value}</h2>
               </div>
 
               <div
-                className="flex align-items-center justify-content-center border-circle"
+                className="stats-icon"
                 style={{
-                  width: "58px",
-                  height: "58px",
-                  background: `${stat.color}15`,
+                  backgroundColor: `${stat.color}15`,
                 }}
               >
                 <i
                   className={stat.icon}
                   style={{
-                    fontSize: "1.7rem",
                     color: stat.color,
                   }}
                 />

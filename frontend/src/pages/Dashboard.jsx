@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
-import { Paginator } from "primereact/paginator";
-
+import CustomPaginator from "../components/CustomPaginator";
 import StatsCard from "../components/StatsCard";
 import TaskToolbar from "../components/TaskToolbar";
 import TaskList from "../components/TaskList";
@@ -151,6 +150,9 @@ const Dashboard = () => {
   });
 
   const paginatedTasks = sortedTasks.slice(first, first + rows);
+  const currentPage = Math.floor(first / rows) + 1;
+
+  const totalPages = Math.ceil(filteredTasks.length / rows);
 
   if (loading) {
     return (
@@ -218,17 +220,15 @@ const Dashboard = () => {
         onView={handleView}
       />
 
-      {filteredTasks.length > rows && (
-        <div className="mt-5 flex justify-content-center">
-          <Paginator
-            first={first}
-            rows={rows}
-            totalRecords={filteredTasks.length}
-            rowsPerPageOptions={[6, 12, 18]}
-            onPageChange={(e) => {
-              setFirst(e.first);
-              setRows(e.rows);
-            }}
+      {totalPages > 1 && (
+        <div className="mt-5">
+          <CustomPaginator
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPrevious={() => setFirst(Math.max(first - rows, 0))}
+            onNext={() =>
+              setFirst(Math.min(first + rows, (totalPages - 1) * rows))
+            }
           />
         </div>
       )}
