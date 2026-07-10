@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth, useUser } from "@clerk/clerk-react";
 import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import CustomPaginator from "../components/CustomPaginator";
@@ -29,6 +29,7 @@ const Dashboard = () => {
   const [rows, setRows] = useState(6);
 
   const { getToken } = useAuth();
+  const { user } = useUser();
   const navigate = useNavigate();
   const { showSuccess, showError } = useToast();
 
@@ -176,7 +177,7 @@ const Dashboard = () => {
                 fontWeight: 700,
               }}
             >
-              👋 Welcome Back
+              👋 Welcome{user?.firstName ? `, ${user.firstName}` : ""}
             </h1>
 
             <p
@@ -186,7 +187,9 @@ const Dashboard = () => {
                 lineHeight: 1.6,
               }}
             >
-              Stay organized and keep making progress.
+              {tasks.length === 0
+                ? "Create your first task and start organizing your work."
+                : "Stay organized and keep making progress."}
             </p>
           </div>
 
