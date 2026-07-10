@@ -41,27 +41,19 @@ const StatsCard = ({ tasks }) => {
   return (
     <div className="grid mb-5">
       {stats.map((stat) => (
-        <div key={stat.title} className="col-6 xl:col-3">
+        <div key={stat.title} className="col-12 md:col-6 xl:col-3">
           <Card className="stats-card h-full">
-            <div className="flex justify-content-between align-items-center gap-3">
-              <div className="min-w-0">
+            <div className="flex justify-content-between align-items-center">
+              <div>
                 <span className="stats-title">{stat.title}</span>
 
-                <h2
-                  className="stats-value"
-                  style={{
-                    fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  }}
-                >
-                  {stat.value}
-                </h2>
+                <h2 className="stats-value">{stat.value}</h2>
               </div>
 
               <div
                 className="stats-icon"
                 style={{
                   backgroundColor: `${stat.color}15`,
-                  flexShrink: 0,
                 }}
               >
                 <i
