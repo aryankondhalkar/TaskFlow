@@ -285,3 +285,57 @@ body {
     font-size: 1.6rem;
   }
 }
+/* Sticky Dashboard Toolbar */
+
+.sticky-toolbar {
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+}
+
+.sticky-toolbar > div {
+  margin-bottom: 0 !important;
+}
+
+.sticky-toolbar .surface-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  background: rgba(255, 255, 255, 0.92);
+}
+/* Dashboard Toolbar */
+
+.toolbar-wrapper {
+  transition: all 0.25s ease;
+}
+
+.toolbar-sticky {
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+}
+
+.toolbar-sticky .surface-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.toolbar-sticky {
+  animation: toolbarSlide 0.22s ease;
+}
+
+@keyframes toolbarSlide {
+  from {
+    transform: translateY(-10px);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

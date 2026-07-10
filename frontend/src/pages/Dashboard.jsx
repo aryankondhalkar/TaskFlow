@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import { Button } from "primereact/button";
@@ -28,6 +28,10 @@ const Dashboard = () => {
   const [sort, setSort] = useState("newest");
   const [rows, setRows] = useState(6);
 
+  const statsRef = useRef(null);
+
+  const [toolbarSticky, setToolbarSticky] = useState(false);
+
   const { getToken } = useAuth();
   const navigate = useNavigate();
   const { showSuccess, showError } = useToast();
@@ -53,6 +57,22 @@ const Dashboard = () => {
   useEffect(() => {
     setFirst(0);
   }, [search, filter, sort]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!statsRef.current) return;
+
+      const bottom = statsRef.current.getBoundingClientRect().bottom;
+
+      setToolbarSticky(bottom <= 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleEdit = (id) => navigate(`/update-task/${id}`);
 
@@ -201,16 +221,24 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <StatsCard tasks={tasks} />
+      <div ref={statsRef}>
+        <StatsCard tasks={tasks} />
+      </div>
 
-      <TaskToolbar
-        search={search}
-        setSearch={setSearch}
-        filter={filter}
-        setFilter={setFilter}
-        sort={sort}
-        setSort={setSort}
-      />
+      <div className="sticky-toolbar">
+        <div
+          className={`toolbar-wrapper ${toolbarSticky ? "toolbar-sticky" : ""}`}
+        >
+          <TaskToolbar
+            search={search}
+            setSearch={setSearch}
+            filter={filter}
+            setFilter={setFilter}
+            sort={sort}
+            setSort={setSort}
+          />
+        </div>
+      </div>
 
       <TaskList
         tasks={paginatedTasks}
